@@ -4,10 +4,8 @@ import { AppService } from './app.service';
 import {ConfigModule} from "@nestjs/config"
 import {KnexModule} from "nest-knexjs"
 import { AuthModule } from './auth/auth.module';
-import { TransactionsModule } from './transactions/transactions.module';
 import { WalletModule } from './wallet/wallet.module';
-import { TransferModule } from './transfer/transfer.module';
-import { FundingModule } from './funding/funding.module';
+
 import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [ConfigModule.forRoot({isGlobal:true}),
@@ -27,13 +25,10 @@ import { JwtModule } from '@nestjs/jwt';
     }
   }),
   AuthModule,
-  TransactionsModule,
   WalletModule,
-  TransferModule,
-  FundingModule
+       
 ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
-

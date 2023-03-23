@@ -4,6 +4,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './authstrategy';
 import { jwtGuard } from './guards/authguard';
+import { RoleGuard } from './guards/roleguard';
 
 @Module({
   imports:[JwtModule.registerAsync({
@@ -13,7 +14,7 @@ import { jwtGuard } from './guards/authguard';
     })
   })],
   controllers: [AuthController],
-  providers: [AuthService,JwtStrategy,jwtGuard],
+  providers: [AuthService,JwtStrategy,jwtGuard,RoleGuard],
   exports:[AuthService]
 })
 export class AuthModule {}

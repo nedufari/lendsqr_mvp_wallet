@@ -4,6 +4,7 @@ import { InjectModel } from 'nest-knexjs';
 import { LoginDto, SignupDto } from './dto';
 import * as bcrypt from "bcrypt"
 import { JwtService } from '@nestjs/jwt';
+import { Roles } from './compay.enum';
 const { v4: uuidv4 } = require('uuid');
 
 @Injectable()
@@ -36,7 +37,8 @@ export class AuthService {
             companyName:signupdto.companyName,
             password:(await hash).toString(),
             email:signupdto.email,
-            companyID:uuid
+            companyID:uuid,
+            roles:Roles.MASTER
         })
 
         const user = await this.knex.table("company").where("companyID", userid).first()
