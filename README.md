@@ -80,6 +80,7 @@ $ JavaScript
 ```
 
 ## API ENDPOINTS
+```bash
 
 POST  api/v1/auth/signup
 POST  api/v1/auth/login
@@ -91,6 +92,7 @@ GET   api/v1/auth/all
 GET   api/v1/wallet/all
 GET   api/v1/wallet/trans
 
+```
 
 
 
