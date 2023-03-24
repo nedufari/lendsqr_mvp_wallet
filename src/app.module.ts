@@ -12,15 +12,15 @@ import { JwtModule } from '@nestjs/jwt';
   KnexModule.forRoot({
     config:{
       client:"mysql",
-      version:"5",
+      // version:"5",
       useNullAsDefault:true,
       connection:{
         // host:process.env.databasehost,
-        password:'@nedupoetry98654449' ,
-        database:'mvpwallet',
-        port:3306,
-        host:"127.0.0.1",
-        user:"root"
+        database: 'railway',
+        user:     'root',
+        password: '1C5OoYRLYql1GcM1P7Pm',
+        port:6887,
+        uri:"mysql://root:1C5OoYRLYql1GcM1P7Pm@containers-us-west-159.railway.app:6887/railway"
       }
     }
   }),
