@@ -93,6 +93,7 @@ export class WalletService {
             senderUUID:senderID,
             currency:Currency.NGR,
             payment_method:Payment_Method.TRANSFER,
+            withdrawalID:null,
             transaction_time:new Date()
 
         })
@@ -127,9 +128,10 @@ export class WalletService {
             trasaction_type:TransactionType.fund,
             amount:fundwalletdto.amount,
             recieverID:reciever,
-            senderUUID:null,
+            // senderUUID:null,
             currency:Currency.NGR,
             payment_method:Payment_Method.DEPOSIT,
+            // withdrawalID:null,
             transaction_time:new Date()
 
         })
@@ -145,6 +147,45 @@ export class WalletService {
             throw error
             
         }
+
+    }
+
+    async withdrawlfunds(withdrawerID:string, amount :number){
+
+        try {
+            const wallet= await this.knex("wallet").where("wallet_address",withdrawerID).first()
+        if (!wallet) throw new HttpException (`wallet adress not found`,HttpStatus.UNAUTHORIZED)
+        if (amount > wallet.balance && wallet.balance===0) throw new HttpException("insufficient balance, transaction canot go through",HttpStatus.FORBIDDEN)
+
+
+        const withdraw= await this.knex.transaction( async (trx)=>{
+            const updatewallet = await trx("wallet").where("wallet_address", withdrawerID).decrement("balance",amount).returning("*")
+
+            const updatetransactiontable= await this.knex("transactions").insert({
+                trasaction_type:TransactionType.withdrawal,
+                amount:amount,
+                withdrawalID:withdrawerID,
+                currency:Currency.NGR,
+                payment_method:Payment_Method.WITHDRAW,
+                // recieverID:null,
+                // senderID:null,
+                transaction_time:new Date()
+    
+            })
+            return [updatetransactiontable]
+            
+        })
+        return withdraw
+            
+        } catch (error) {
+            throw error
+            
+        }
+        
+
+      
+        
+
 
     }
 

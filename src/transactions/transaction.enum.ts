@@ -18,14 +18,14 @@ export enum Currency{
 }
 
 export enum Payment_Method{
-    CARD="card",
+    WITHDRAW="withdraw",
     TRANSFER="transfer",
-    USSD="ussd",
     DEPOSIT="deposit"
 
 }
 
 export enum TransactionType{
     transfer="transfer",
-    fund="fund"
+    fund="fund",
+    withdrawal="withdrawal"
 }

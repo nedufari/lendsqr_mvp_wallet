@@ -33,6 +33,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.2.0",
     "nest-knexjs": "^0.0.14",
+    "pactum": "^3.3.2",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.1.13",

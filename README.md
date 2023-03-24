@@ -58,6 +58,43 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Project Information
+
+```bash
+# project name 
+Demo MVP wallet service 
+
+# project discription 
+This is a mobile wallet service that allows users to create an account, fund their account, transfer funds to another user's account, and withdraw funds from their account.
+
+
+# technology stack 
+$ Node JS(LTS version)
+$ Knex Js ORM
+$ MYSQL database
+$ TypeScript
+$ JavaScript
+
+
+
+```
+
+## API ENDPOINTS
+
+POST  api/v1/auth/signup
+POST  api/v1/auth/login
+POST  api/v1/wallet/new/:ownerid
+POST  api/v1/wallet/fund/:walletID
+POST  api/v1/wallet/transfer/:senderid/:recieverid/:amount
+POST  api/v1/wallet/withdraw/:withdrawalID/:amount
+GET   api/v1/auth/all
+GET   api/v1/wallet/all
+GET   api/v1/wallet/trans
+
+
+
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
@@ -71,3 +108,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+
+
